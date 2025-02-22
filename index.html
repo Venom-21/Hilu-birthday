@@ -17,6 +17,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            text-align: center;
             overflow: hidden;
         }
 
@@ -25,14 +26,13 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            width: 100%;
-            position: absolute;
+            width: 90%;
+            max-width: 800px;
             transition: transform 2s ease-in-out;
         }
 
         #countdown {
-            font-size: 120px;
+            font-size: 100px;
             font-weight: bold;
             color: white;
             opacity: 0;
@@ -40,7 +40,7 @@
         }
 
         #birthdayText {
-            font-size: 80px;
+            font-size: 60px;
             font-weight: bold;
             color: white;
             opacity: 0;
@@ -50,31 +50,31 @@
         }
 
         #quote {
-            font-size: 30px;
+            font-size: 24px;
             color: white;
             opacity: 0;
             text-align: center;
             width: 80%;
             min-height: 80px;
-            margin-top: 30px;
+            margin-top: 20px;
             animation: fadeIn 1.5s ease-in-out forwards;
         }
 
         footer {
             position: absolute;
-            bottom: 20px;
-            font-size: 20px;
+            bottom: 15px;
+            font-size: 18px;
             color: white;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 5px;
             opacity: 0;
             animation: fadeIn 2s ease-in-out forwards 5s;
         }
 
         .heart {
             color: red;
-            font-size: 24px;
+            font-size: 22px;
             animation: heartbeat 1.5s infinite;
         }
 
@@ -101,6 +101,44 @@
 
         @keyframes moveUp {
             to { transform: translateY(-30vh); }
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            #countdown {
+                font-size: 80px;
+            }
+            #birthdayText {
+                font-size: 50px;
+            }
+            #quote {
+                font-size: 20px;
+                width: 90%;
+            }
+            footer {
+                font-size: 16px;
+            }
+            .heart {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #countdown {
+                font-size: 60px;
+            }
+            #birthdayText {
+                font-size: 40px;
+            }
+            #quote {
+                font-size: 18px;
+            }
+            footer {
+                font-size: 14px;
+            }
+            .heart {
+                font-size: 18px;
+            }
         }
 
     </style>
