@@ -270,6 +270,45 @@
       }
 
 
+
+      .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background-color: red;
+            border-radius: 50%;
+            animation: floatUp 5s linear infinite;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .balloon::before {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: white;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        .popped {
+            transform: scale(0);
+            opacity: 0;
+            transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+        }
     </style>
 </head>
 <body>
@@ -294,6 +333,7 @@
     </div>  
 
     <footer>With pure love by Hitler <span class="heart">❤</span> with a lot of sorry's!</footer>
+    <div id="balloonContainer"></div>
 
     <audio id="bgMusic" loop>
         <source src="./birthday.mp3" type="audio/mp3">
@@ -398,6 +438,30 @@
             // Start with the first image highlighted
             highlightImage();
         });
+
+        // BALOON POPING UP SECTION
+        function createBalloon() {
+            const balloon = document.createElement("div");
+            balloon.classList.add("balloon");
+            balloon.style.backgroundColor = getRandomColor();
+            balloon.style.left = Math.random() * 90 + "vw";
+            balloon.style.animationDuration = (Math.random() * 3 + 4) + "s";
+
+            balloon.addEventListener("click", () => {
+                balloon.classList.add("popped");
+                setTimeout(() => balloon.remove(), 300);
+            });
+
+            document.getElementById("balloonContainer").appendChild(balloon);
+            
+            setTimeout(() => balloon.remove(), 5000); 
+        }
+
+        function getRandomColor() {
+            const colors = ["red", "blue", "yellow", "green", "purple", "pink", "orange"];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+        setInterval(createBalloon, 1000);
 
     </script>
 
